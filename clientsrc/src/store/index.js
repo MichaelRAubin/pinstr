@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import { $resource } from "./resource";
 import { pinsService } from '../../../server/services/PinsService';
 import { PinSchema } from '../../../server/models/Pin';
+import { Pin } from "../../Models/Pin";
 
 Vue.use(Vuex);
 
@@ -21,10 +22,11 @@ export default new Vuex.Store({
     addPin(state, pin) {
       state.pins.push(pin);
     },
-    removePin(state, pin, _id) {
-      let i = state.pins.findIndex(p => p._id == pin._id)
+    removePin(state, pin, id) {
+      let i = state.pins.findIndex(p => p.id == pin.id)
       if (i != -1) {
-        state.pins.splice(i, 1, _id)
+        state.pins.splice(i, 1, pin.id)
+        debugger
       }
     }
   },
@@ -41,17 +43,19 @@ export default new Vuex.Store({
 
     async getPins({ commit }) {
       let pins = await $resource.get("api/pins");
+
       commit("setPins", pins);
     },
 
     async createPin({ commit }, pinData) {
       let pin = await $resource.post("api/pins", pinData);
       pin.creator = pinData.creator;
+      pin.id = pinData.id
       commit("addPin", pin);
     },
-    async removePin({ commit, state }, pin, _id) {
-      await $resource.delete("api/pins/" + _id)
-      commit("removePin", pin, _id)
+    async removePin({ commit, state }, id) {
+      await $resource.delete("api/pins/" + id)
+      commit("removePin", id)
     }
   },
   modules: {

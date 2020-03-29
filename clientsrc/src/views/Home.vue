@@ -2,7 +2,7 @@
   <div class="home container-fluid">
     <div class="row mt-3">
       <div class="col-10 m-auto col-md-4" v-for="pin in pins" :key="pin.id">
-        <pin class="my-2" :pin="pin" />
+        <Pin class="my-2" :pin="pin" />
       </div>
     </div>
   </div>

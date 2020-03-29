@@ -31,7 +31,7 @@ export class PinsController extends BaseController {
   async delete(req, res, next) {
     try {
       req.body.creatorEmail = req.userInfo.email;
-      await pinsService.delete(req.params._id)
+      await pinsService.delete(req.params.id)
       res.send("deleted");
     } catch (error) {
       next(error);
