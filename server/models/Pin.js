@@ -3,10 +3,12 @@ const Schema = mongoose.Schema;
 
 export const PinSchema = new Schema(
   {
+    _id: { type: String },
     title: { type: String, required: true },
     description: { type: String, required: true },
     creatorEmail: { type: String, required: true },
-    public: { type: Boolean, default: true }
+    public: { type: Boolean, default: true },
+    closed: { type: Boolean, default: false }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );

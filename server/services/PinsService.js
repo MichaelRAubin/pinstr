@@ -12,6 +12,10 @@ class PinsService {
   async create(pin) {
     return await dbContext.Pins.create(pin);
   }
+  async delete(_id) {
+    // @ts-ignore
+    return await dbContext.Pins.findByIdAndRemove(_id)
+  }
 }
 
 export const pinsService = new PinsService();
