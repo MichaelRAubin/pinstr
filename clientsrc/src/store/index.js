@@ -22,11 +22,10 @@ export default new Vuex.Store({
     addPin(state, pin) {
       state.pins.push(pin);
     },
-    removePin(state, pin, id) {
-      let i = state.pins.findIndex(p => p.id == pin.id)
+    removePin(state, pin) {
+      let i = state.pins.findIndex(p => p.id == pin._Id)
       if (i != -1) {
-        state.pins.splice(i, 1, pin.id)
-        debugger
+        state.pins.splice(i, 1)
       }
     }
   },
@@ -53,9 +52,10 @@ export default new Vuex.Store({
       pin.id = pinData.id
       commit("addPin", pin);
     },
-    async removePin({ commit, state }, id) {
-      await $resource.delete("api/pins/" + id)
-      commit("removePin", id)
+    async removePin({ commit }, pin) {
+      await $resource.delete("api/pins/" + pin.Id)
+      commit("removePin", pin)
+
     }
   },
   modules: {
