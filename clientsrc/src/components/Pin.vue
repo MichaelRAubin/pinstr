@@ -25,12 +25,12 @@ export default {
     UserAvatar
   },
   methods: {
-    async deletePin(pin) {
+    async deletePin(pin, _id) {
       let yes = this.$confirm("Delete the pin?"); //what does $confirm do?
       if (!yes) {
         return;
       }
-      this.$store.dispatch("removePin", pin);
+      this.$store.dispatch("removePin", pin, _id);
     }
   }
 };

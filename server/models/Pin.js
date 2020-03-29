@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 export const PinSchema = new Schema(
   {
-    _id: { type: String },
+
     title: { type: String, required: true },
     description: { type: String, required: true },
     creatorEmail: { type: String, required: true },
