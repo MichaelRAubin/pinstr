@@ -27,7 +27,18 @@ const routes = [
       path: "pins",
       name: "Dashboard.Pins",
       component: loadView("Pins.vue")
-    }]
+    },
+    {
+      path: "MyPins",
+      name: "Dashboard.MyPins",
+      component: loadView("MyPins.vue")
+    },
+    {
+      path: "FavoritePins",
+      name: "Dashboard.FavoritePins",
+      component: loadView("FavoritePins.vue")
+    }
+    ]
   },
 ];
 

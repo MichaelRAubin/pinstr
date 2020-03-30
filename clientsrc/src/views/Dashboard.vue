@@ -4,7 +4,9 @@
       <div class="col-2 mx-auto">
         <div class="d-flex flex-column links">
           <router-link :to="{name:'Dashboard.Profile'}">Profile</router-link>
-          <router-link :to="{name:'Dashboard.Pins'}">Pins</router-link>
+          <router-link :to="{name:'Dashboard.Pins'}">Create Pins</router-link>
+          <router-link :to="{name:'Dashboard.MyPins'}">My Pins</router-link>
+          <router-link :to="{name:'Dashboard.FavoritePins'}">My Favorites</router-link>
         </div>
       </div>
       <div class="col-8 mx-auto">

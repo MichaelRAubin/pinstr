@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     async deletePin(pin) {
-      let yes = this.$confirm("Delete the pin?");
+      let yes = await this.$confirm("Delete the pin?");
       if (!yes) {
         return;
       } else {

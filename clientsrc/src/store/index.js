@@ -10,7 +10,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     profile: {},
-    pins: []
+    pins: [],
+    myPins: []
   },
   mutations: {
     setProfile(state, profile) {
@@ -27,6 +28,10 @@ export default new Vuex.Store({
       if (i != -1) {
         state.pins.splice(i, 1)
       }
+    },
+    setMyPins(state, creatorEmail) {
+      let myPins = state.myPins.filter(m => m.creatorEmail == creatorEmail)
+      state.myPins = myPins.map(myPinData => new Pin(myPinData));
     }
   },
   actions: {
@@ -42,8 +47,11 @@ export default new Vuex.Store({
 
     async getPins({ commit }) {
       let pins = await $resource.get("api/pins");
-
       commit("setPins", pins);
+    },
+
+    async getMyPins({ commit }, myPins) {
+      commit("setMyPins", myPins)
     },
 
     async createPin({ commit }, pinData) {
@@ -55,7 +63,6 @@ export default new Vuex.Store({
     async removePin({ commit }, pin) {
       await $resource.delete("api/pins/" + pin.Id)
       commit("removePin", pin)
-
     }
   },
   modules: {
