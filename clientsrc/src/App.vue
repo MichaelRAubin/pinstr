@@ -43,7 +43,7 @@ export default {
       console.log("here");
       if (this.$auth.isAuthenticated) {
         ConfigureResource(this);
-        this.$store.dispatch("getProfile");
+        this.$store.dispatch("initUserData");
       }
     }
   }

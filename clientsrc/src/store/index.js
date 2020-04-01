@@ -4,6 +4,7 @@ import { $resource } from "./resource";
 import { pinsService } from '../../../server/services/PinsService';
 import { PinSchema } from '../../../server/models/Pin';
 import { Pin } from "../../Models/Pin";
+import favoritesStore from "./favoritesStore"
 
 Vue.use(Vuex);
 
@@ -35,6 +36,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    async initUserData({ dispatch }) {
+      dispatch("getProfile");
+      dispatch("getFavorites");
+    },
+
     async getProfile({ commit }) {
       let profile = await $resource.get("api/profile");
       commit("setProfile", profile);
@@ -66,5 +72,6 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    favoritesStore
   }
 });

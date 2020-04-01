@@ -1,6 +1,9 @@
 <template>
   <div class="card p-2 pin shadow">
-    <h4>{{pin.title}}</h4>
+    <div class="d-flex align-items-center justify-contents-between">
+      <h4>{{pin.title}}</h4>
+      <favorite-icon class="favorite-icon" :pin="pin" />
+    </div>
     <p>{{pin.description}}</p>
     <hr />
     <div class="d-flex justify-content-between align-items-center">
@@ -16,13 +19,15 @@
 
 <script>
 import UserAvatar from "./UserAvatar";
+import FavoriteIcon from "./FavoriteIcon";
 export default {
   name: "Pin",
   props: {
     pin: { type: Object, required: true }
   },
   components: {
-    UserAvatar
+    UserAvatar,
+    FavoriteIcon
   },
   methods: {
     async deletePin(pin) {
