@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { $resource } from "./resource";
-import { pinsService } from '../../../server/services/PinsService';
-import { PinSchema } from '../../../server/models/Pin';
+// import { pinsService } from '../../../server/services/PinsService';
+// import { PinSchema } from '../../../server/models/Pin';
 import { Pin } from "../../Models/Pin";
-import favoritesStore from "./favoritesStore"
+import FavoritesStore from "./FavoritesStore"
 
 Vue.use(Vuex);
 
@@ -72,6 +72,6 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    favoritesStore
+    FavoritesStore
   }
 });
